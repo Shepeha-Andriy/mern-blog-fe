@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from 'react-router-dom'
 import {checkIsAuth, logout} from '../redux/features/auth/authSlice'
