@@ -79,7 +79,7 @@ export const Post = () => {
             <div className={post.imgUrl ? 'flex rounded-sm h-80' : "flex rounded-sm"}>
               {
                 post.imgUrl && (
-                  <img src={`https://andriy-mern-blog.onrender.com/${post.imgUrl}`} alt="img" className="object-cover w-full"></img>
+                  <img src={`${post.imgUrl}`} alt="img" className="object-cover w-full"></img>
                 )
               }
           </div>

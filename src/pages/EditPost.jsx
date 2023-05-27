@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from "../utils/axios";
 import { updatePost } from '../redux/features/post/postSlice'
+import FileBase from 'react-file-base64';
 
 export const EditPost = () => {
   const [title, setTitle] = useState('')
@@ -53,20 +54,17 @@ export const EditPost = () => {
       
       <label className="text-gray-300 py-2 bg-gray-600 text-xs mt-2 flex items-center justify-center border-2 border-dotted cursor-pointer">
         attach image
-        <input type="file" className="hidden" onChange={e => {
-          setNewImg(e.target.files[0])
-          setOldImg('')
-        }}></input>
+        <FileBase type="file" multiple={false} onDone={({ base64 }) => { setNewImg(base64) }} />
       </label>
       <div className="flex object-cover py-2">
         {
           oldImg && (
-            <img src={`https://andriy-mern-blog.onrender.com/${oldImg}`} alt="img"></img>
+            <img src={`${oldImg}`} alt="img"></img>
           )
         }
         {
           newImg && (
-            <img src={URL.createObjectURL(newImg)} alt="img"></img>
+            <img src={newImg} alt="img"></img>
           )
         }
       </div>

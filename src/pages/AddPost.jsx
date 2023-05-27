@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createPost } from "../redux/features/post/postSlice";
 import { useNavigate } from "react-router-dom";
+import FileBase from 'react-file-base64';
 
 export const AddPost = () => {
   const [title, setTitle] = useState('')
@@ -38,12 +39,12 @@ export const AddPost = () => {
       
       <label className="text-gray-300 py-2 bg-gray-600 text-xs mt-2 flex items-center justify-center border-2 border-dotted cursor-pointer">
         attach image
-        <input type="file" className="hidden" onChange={e => setImg(e.target.files[0])}></input>
+        <FileBase type="file" multiple={false} onDone={({ base64 }) => { setImg(base64) }} />
       </label>
       <div className="flex object-cover py-2">
         {
           img && (
-            <img src={URL.createObjectURL(img)} alt="img"></img>
+            <img src={img} alt="img"></img>
           )
         }
       </div>
